@@ -1,0 +1,52 @@
+function setBudget() {
+    var totalBudgetInput = document.getElementById("total-budget");
+    var totalBudget = parseFloat(totalBudgetInput.value);
+    
+    if (isNaN(totalBudget) || totalBudget <= 0) {
+      alert("Please enter a valid budget amount.");
+      return;
+    }
+    
+    var expenseForm = document.getElementById("expense-form");
+    expenseForm.style.display = "block";
+    
+    var summaryBox = document.getElementById("summary-box");
+    summaryBox.style.display = "block";
+    
+    document.getElementById("total-amount").textContent = totalBudget;
+  }
+  
+  function calculateTotalAmount() {
+    var expenseAmountInput = document.getElementById("expense-amount");
+    var taxInput = document.getElementById("tax");
+    
+    var expenseAmount = parseFloat(expenseAmountInput.value);
+    var tax = expenseAmount * 0.0875;
+    
+    taxInput.value = tax.toFixed(2);
+  }
+  
+  function addExpense() {
+    var expenseAmountInput = document.getElementById("expense-amount");
+    var taxInput = document.getElementById("tax");
+    var totalAmountSpan = document.getElementById("total-amount");
+    var expenseAmountSummarySpan = document.getElementById("expense-amount-summary");
+    var balanceSpan = document.getElementById("balance");
+    
+    var expenseAmount = parseFloat(expenseAmountInput.value);
+    var tax = parseFloat(taxInput.value);
+    var totalAmount = parseFloat(totalAmountSpan.textContent);
+    
+    var newExpenseAmount = expenseAmount + tax;
+    
+    if (newExpenseAmount > totalAmount) {
+      alert("Expense amount exceeds the total budget.");
+      return;
+    }
+    
+    var balance = totalAmount - newExpenseAmount;
+    
+    expenseAmountSummarySpan.textContent = newExpenseAmount.toFixed(2);
+    balanceSpan.textContent = balance.toFixed(2);
+  }
+  
