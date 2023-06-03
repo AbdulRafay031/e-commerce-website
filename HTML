@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="budget-box">
+    <h2>Budget App</h2>
+    <label for="total-budget">Total Budget:</label>
+    <input type="number" id="total-budget">
+    <button onclick="setBudget()">Set Budget</button>
+    <hr>
+    <div id="expense-form" style="display: none;">
+      <h3>Expense Form</h3>
+      <label for="due-date">Due Date:</label>
+      <input type="date" id="due-date">
+      <label for="expense-amount">Expense Amount:</label>
+      <input type="number" id="expense-amount" onkeyup="calculateTotalAmount()">
+      <label for="tax">Tax:</label>
+      <input type="text" id="tax" readonly>
+      <label for="category">Category:</label>
+      <select id="category">
+        <option value="households">Households</option>
+        <option value="utility-bills">Utility Bills</option>
+        <option value="others">Others</option>
+      </select>
+      <label for="description">Description:</label>
+      <textarea id="description"></textarea>
+      <label for="payment-date">Payment Date:</label>
+      <input type="date" id="payment-date">
+      <button onclick="addExpense()">Add Expense</button>
+    </div>
+    <div id="summary-box" style="display: none;">
+      <h3>Summary</h3>
+      <p>Total Amount: <span id="total-amount"></span></p>
+      <p>Expense Amount: <span id="expense-amount-summary"></span></p>
+      <p>Balance: <span id="balance"></span></p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
